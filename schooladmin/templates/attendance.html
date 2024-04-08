@@ -1,0 +1,117 @@
+{% extends 'base2.html' %}
+{% load static %}
+{% load bootstrap5 %}
+
+
+{% block content %}
+  
+<center>
+  <h1 style='margin-top: 50px; padding: 20px;'> Student Attendance </h1>
+  <p style='margin: 0; padding: 0'><a class="btn btn-outline-success" href='{% url 'allattendance' %}'> View all Attendance</a></p>
+</center><hr>
+<div class='row'>
+    <div class='col-5'>
+<section style='background-color: white; padding: 10px; border-radius: 12px; '>
+      <form action="{% url 'attendance' %}" enctype="multipart/form-data" method="post" class='form-control'>
+        {% csrf_token %}
+        <div class='formsec'>
+            <h3> Add Attendance <span><a href="#" class="btn btn-outline-warning">Use Card Instead</a></span></h3>
+            <hr>
+            <section class='innersec'>
+            <label for='student'> Student <span style='color: red'>* </span></label>
+            {{form.student}}
+            </section>
+
+            <section class='innersec'>
+            <label> Picked By </label>
+            {{form.picked_by}}
+            </section>
+
+            <section class='innersec'>
+            <label> Checking In</label>
+            <input class='forminp' type='checkbox' name='checkin' >
+            </section>
+
+            <section class='innersec'>
+            <label> Checking Out</label>
+            <input class='forminp' type='checkbox' name='checkout'>
+            </section>
+
+            <section class='innersec'>
+            <label> Time <span style='color: red'>* </span></label>
+            <input class='forminp' type='Time' name='checktime' required>
+            </section>
+
+            </div>
+            <hr>
+            <button type="submit" class="btn btn-success">Submit</button>
+        
+    </form>
+  </section>
+</div>
+  <div class='col-7'> 
+    <section style='background-color: white; padding: 18px; border-radius: 12px; '>
+        <h3> Today's Attendance </h3>
+      <table id="studentTable"  class="display">
+          <thead>
+              <tr>
+                  <th> Student </th>
+                  <th> Class </th>
+                  <th> Check-In </th>
+                  <th> Check-Out </th>
+                  <th>Picked By</th>
+              </tr>
+          </thead>
+          <tbody>
+              {% for std in students %}
+              <tr>
+                  <td> {{std.student}}</td>
+                  
+                  <td>{{ std.student.current_class }}</td>
+                  <td>{{std.check_in_time }}</td>
+                  <td>{{ std.check_out_time  }}</td>
+                  <td>{{std.picked_by}}</td>
+              </tr>
+              {% endfor %}
+          </tbody>
+      </table>
+  </section>
+  </div>
+</div>
+    
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'package/dist/sweetalert2.all.min.js' %}"></script>
+    {% if messages %}
+    {% for message in messages %}
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: "{{ message }}",
+                showConfirmButton: false,
+                timer: 3000
+            });
+        </script>
+    {% endfor %}
+    {% endif %}
+{% endblock %}
+{% block js %}
+<script src="{% static 'js/jquery.js' %}"></script>
+<script src="{% static 'js/jquery.dataTables.min.js' %}"></script>
+<script src="{% static 'js/dataTables.buttons.min.js' %}"></script>
+<script src="{% static 'js/buttons.html5.min.js' %}"></script>
+<script src="{% static 'js/buttons.print.min.js' %}"></script>
+<script src="{% static 'js/jszip.min.js' %}"></script>
+<script src="{% static 'js/pdfmake.min.js' %}"></script>
+<script src="{% static 'js/vfs_fonts.js' %}"></script>
+
+<script>
+$(document).ready(function() {
+    $('#studentTable').DataTable({
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+    });
+});
+</script>
+{% endblock %}

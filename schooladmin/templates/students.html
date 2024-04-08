@@ -1,0 +1,233 @@
+{% extends 'base2.html' %}
+{% load static %}
+{% load bootstrap5 %}
+
+
+{% block content %}
+  
+<center>
+  <h1 style='margin-top: 50px; padding: 20px;'> Add New Student </h1>
+  <p style='margin: 0; padding: 0'><a href='{% url 'allstudents' %}'>View all students</a></p>
+</center><hr>
+<section style='background-color: white; padding: 10px; border-radius: 12px; '>
+      <form action="{% url 'students'%}" enctype="multipart/form-data" method="post" class='formdiv'>
+        {% csrf_token %}
+        <div class='formsec'>
+            <h3> Personal Details </h3>
+            <hr>
+            <section class='innersec'>
+            <label for='firstname'> Firstname <span style='color: red'>* </span></label>
+            {{form.firstname}}
+            </section>
+
+            <section class='innersec'>
+            <label> Middlename </label>
+            {{form.middlename}}
+            </section>
+
+            <section class='innersec'>
+            <label> Lastname <span style='color: red'>* </span></label>
+            {{form.lastname}}
+            </section>
+
+            <section class='innersec'>
+            <label> Date Of Birth <span style='color: red'>* </span></label>
+            {{form.dob}}
+            </section>
+
+            <section class='innersec'>
+            <label> Gender <span style='color: red'>* </span></label>
+            {{form.gender}}
+            </section>
+
+            <section class='innersec'>
+            <label> Location <span style='color: red'>* </span></label>
+            {{form.location}}
+            </section>
+
+            <section class='innersec'>
+            <label> Current Class <span style='color: red'>* </span></label>
+            {{form.current_class}}
+            </section>
+
+            <section class='innersec'>
+            <label> Previous School </label>
+            {{form.formerschool}}
+            </section>
+
+            <section class='innersec'>
+            <label> Passport Picture </label>
+            {{form.pic}}
+            <div id="imagePreview"></div>
+            </section>
+        </div > 
+        <section class='formsec'>
+            <h3> Parent / Guardian </h3>
+            <hr>
+            <div class='card' style='background:transparent'>
+                <div class='card-header'>
+                    {% comment %} <button class ='btn btn-primary' id='dropdownToggle' aria-expanded='false'>Father's Details</button> {% endcomment %}
+                    <h3> Father's Details </h3>
+                </div>
+                <div class='card-body hidden-section' id='hiddenSection'>
+                    <section class='innersec'>
+                    <label> Father's Fullname </label>
+                    {{form.f_fullname}}
+                    </section>
+
+                    <section class='innersec'>
+                    <label> Father's Occupation </label>
+                    {{form.f_occupation}}
+                    </section>
+
+                    <section class='innersec'>
+                    <label> Father's Address </label>
+                    {{form.f_address}}
+                    </section>
+
+                    <section class='innersec'>
+                    <label> Father's Mobile Number</label>
+                    {{form.f_mobile}}
+                    </section>
+
+                    <section class='innersec'>
+                    <label> Is father alive</label>
+                    {{form.f_alive}}
+                    </section>
+                </div>
+            </div><br>
+            <div class='card' style='background:transparent'>
+                <div class='card-header'>
+                    {% comment %} <button class ='btn btn-primary' id='dropdownToggle1' aria-expanded='false'>Mother's Details</button> {% endcomment %}
+                    <h3> Mother's Details </h3>
+                </div>
+                <div class='card-body hidden-section' id='hiddenSection1'>
+                    <section class='innersec'>
+                    <label> Mother's Fullname </label>
+                    {{form.m_fullname}}
+                    </section>
+
+                    <section class='innersec'>
+                    <label> Mother's Occupation </label>
+                    {{form.m_occupation}}
+                    </section>
+
+                    <section class='innersec'>
+                    <label> Mother's Address </label>
+                    {{form.m_address}}
+                    </section>
+
+                    <section class='innersec'>
+                    <label> Mother's Mobile Number</label>
+                    {{form.m_mobile}}
+                    </section>
+
+                    <section class='innersec'>
+                    <label> Is mother alive</label>
+                    {{form.m_alive}}
+                    </section>
+                </div>
+            </div><br>
+            <div class='card' style='background:transparent'>
+                <div class='card-header'>
+                    {% comment %} <button class ='btn btn-primary' id='dropdownToggle2' aria-expanded='false'>Guardian's Details</button> {% endcomment %}
+                    <h3> Guardian's Details </h3>
+                </div>
+                <div class='card-body hidden-section' id='hiddenSection2'>
+                    <section class='innersec'>
+                    <label> Guardian's Fullname </label>
+                    {{form.g_fullname}}
+                    </section>
+
+                    <section class='innersec'>
+                    <label> Guardian's Occupation </label>
+                    {{form.g_occupation}}
+                    </section>
+
+                    <section class='innersec'>
+                    <label> Guardian's Address </label>
+                    {{form.g_address}}
+                    </section>
+
+                    <section class='innersec'>
+                    <label> Guardian's Mobile Number</label>
+                    {{form.g_mobile}}
+                    </section>
+                </div>
+            </div>
+            <hr>
+            <button type="submit" class="btn btn-success">Submit</button>
+        </section>
+    </form>
+  </section>
+
+    
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'package/dist/sweetalert2.all.min.js' %}"></script>
+    {% if messages %}
+    {% for message in messages %}
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: "{{ message }}",
+                showConfirmButton: false,
+                timer: 3000
+            });
+        </script>
+    {% endfor %}
+    {% endif %}
+
+    {% comment %} <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          var dropdownToggle = document.getElementById('dropdownToggle');
+          var hiddenSection = document.getElementById('hiddenSection');
+      
+          dropdownToggle.addEventListener('click', function() {
+            // Toggle the display property of the section
+            hiddenSection.style.display = hiddenSection.style.display === 'none' ? 'block' : 'none';
+          });
+      
+          // Initially hide the section when the page loads
+          hiddenSection.style.display = 'none';
+        });
+      </script>
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          var dropdownToggle1 = document.getElementById('dropdownToggle1');
+          var hiddenSection1 = document.getElementById('hiddenSection1');
+      
+          dropdownToggle1.addEventListener('click', function() {
+            // Toggle the display property of the section
+            hiddenSection1.style.display = hiddenSection1.style.display === 'none' ? 'block' : 'none';
+          });
+      
+          // Initially hide the section when the page loads
+          hiddenSection1.style.display = 'none';
+        });
+      </script>
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          var dropdownToggle2 = document.getElementById('dropdownToggle2');
+          var hiddenSection2 = document.getElementById('hiddenSection2');
+      
+          dropdownToggle2.addEventListener('click', function() {
+            // Toggle the display property of the section
+            hiddenSection2.style.display = hiddenSection2.style.display === 'none' ? 'block' : 'none';
+          });
+      
+          // Initially hide the section when the page loads
+          hiddenSection2.style.display = 'none';
+        });
+      </script> {% endcomment %}
+      <script>
+        function previewImage(event) {
+          var file = event.target.files[0];
+          var reader = new FileReader();
+          reader.onload = function(e) {
+            var imagePreview = document.getElementById('imagePreview');
+            imagePreview.innerHTML = '<img src="' + e.target.result + '" alt="Preview" width=300px >';
+          }
+          reader.readAsDataURL(file);
+        }
+        </script>
+{% endblock %}

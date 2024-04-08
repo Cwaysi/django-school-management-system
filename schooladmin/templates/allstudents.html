@@ -1,0 +1,67 @@
+{% extends 'base2.html' %}
+{% load static %}
+{% load bootstrap5 %}
+
+{% block content %}
+<div class="container-fluid">
+    <!-- Adjust the column size as needed -->
+            <h1 style='margin-top: 50px'> ALL STUDENTS <span><a class='btn btn-outline-success' href='{% url 'students' %}'><i class="fas fa-pen"></i> Add New Student</a></span></h1><hr>
+            <div class="row">
+                <div class="col-md-9"> 
+            <section style='background-color: white; padding: 18px; border-radius: 12px; '>
+                <table id="studentTable"  class="display">
+                    <thead>
+                        <tr>
+                            <th style='width: 10%'> Pictures </th>
+                            <th>Firstname</th>
+                            <th>Middlename</th>
+                            <th>Lastname</th>
+                            <th>Class</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for std in students %}
+                        <tr>
+                            <td>
+                                {% if std.pic %} 
+                                    <img src='../media/{{ std.pic}}' style='width: 200px; height: 200px; object-fit: cover; border-radius: 50%;'>
+                                {% else %}
+                                    No Image
+                                {% endif %}
+                            </td>
+                            
+                            <td>{{ std.firstname }}</td>
+                            <td>{% if std.middlename %} {{ std.middlename }} {% else %}  {% endif %}</td>
+                            <td>{{ std.lastname }}</td>
+                            <td>{{ std.current_class }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </section>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block js %}
+<script src="{% static 'js/jquery.js' %}"></script>
+<script src="{% static 'js/jquery.dataTables.min.js' %}"></script>
+<script src="{% static 'js/dataTables.buttons.min.js' %}"></script>
+<script src="{% static 'js/buttons.html5.min.js' %}"></script>
+<script src="{% static 'js/buttons.print.min.js' %}"></script>
+<script src="{% static 'js/jszip.min.js' %}"></script>
+<script src="{% static 'js/pdfmake.min.js' %}"></script>
+<script src="{% static 'js/vfs_fonts.js' %}"></script>
+
+<script>
+$(document).ready(function() {
+    $('#studentTable').DataTable({
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+    });
+});
+</script>
+{% endblock %}

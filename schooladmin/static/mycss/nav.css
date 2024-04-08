@@ -1,0 +1,92 @@
+*{
+    margin: 0;
+    padding: 0;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    box-sizing: border-box;
+    font-family: "poppins", sans-serif;
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    left: 0;
+    background: rgb(250, 80, 19);
+    width: 70px;
+    overflow: hidden;
+    transition: width 0.2s linear;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+    margin: 0;
+    
+}
+
+nav ul {
+    list-style-type: none; /* Remove bullets from list */
+    padding: 0; /* Remove default padding */
+    margin: 0; /* Remove default margin */
+}
+
+/* Other CSS rules remain the same */
+
+.logo{
+    text-align: center;
+    display: flex;
+    margin: 10px 0 0 10px;
+}
+.logo img{
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+}
+.logo span{
+    font-weight: bold;
+    padding-left: 10px;
+    font-size: 18px;
+    text-transform: uppercase;
+}
+.aa{
+    position: relative;
+    color: rgb(85, 83, 83);
+    font-size: 14px;
+    display: table;
+    width: 300px;
+    padding: 10px;
+    margin-left: 0;
+}
+.fas {
+    position: relative;
+    width: 70px;
+    height: 40px;
+    top: 14px;
+    font-size: 25px;
+    text-align: center;
+    color: white;
+}
+.nav-item{
+    position: relative;
+    top: 12px;
+    margin-left: 12px;
+    font-size: 20px;
+    color: white;
+}
+.aa:hover{
+    background:navy;
+}
+nav:hover{
+    width: 280px;
+    transition: all 0.5s ease;
+}
+.logout{
+    position: absolute;
+    bottom: 0;
+}
+nav ul {
+    list-style-type: none; 
+}
+
+nav ul li {
+    margin: 0; 
+}

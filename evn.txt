@@ -1,0 +1,4 @@
+cd ..
+source venv/bin/activate
+cd schoolmanagement
+python3 manage.py runserver
