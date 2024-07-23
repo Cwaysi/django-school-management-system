@@ -1,11 +1,11 @@
-{% extends 'base2.html' %}
+{% extends 'base.html' %}
 {% load static %}
 {% load bootstrap5 %}
 
 {% block content %}
 <div class="container-fluid">
     <!-- Adjust the column size as needed -->
-            <h1 style='margin-top: 50px'> ALL STUDENTS <span><a class='btn btn-outline-success' href='{% url 'attendance' %}'><i class="fas fa-pen" style="height: 20px"></i> Record New Attendance</a></span></h1><hr>
+            <h3 style='margin-top: 50px'> ALL ATTENDANCE <span><a class='btn btn-outline-success' href='{% url 'attendance' %}'><i class="fas fa-pen" ></i> Record New Attendance</a></span></h3><hr>
             <div class="row">
                 <section style='background-color: white; padding: 15px; margin: 5px; border-radius: 12px; '>
                 <div class="col-md-12"> 

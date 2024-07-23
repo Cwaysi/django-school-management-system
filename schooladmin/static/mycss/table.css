@@ -486,7 +486,7 @@ table.dataTable td {
   color: #fff;
   border: none;
   border-radius: 5px;
-  padding: 8px 12px;
+  padding: 5px 8px;
   margin-right: 5px;
 }
 
@@ -500,7 +500,7 @@ table.dataTable td {
   color: #fff;
   border: none;
   border-radius: 5px;
-  padding: 8px 12px;
+  padding: 5px 8px;
   margin-right: 5px;
 }
 
@@ -514,7 +514,7 @@ table.dataTable td {
   color: #212529;
   border: none;
   border-radius: 5px;
-  padding: 8px 12px;
+  padding: 5px 8px;
   margin-right: 5px;
 }
 
@@ -528,7 +528,7 @@ table.dataTable td {
   color: #fff;
   border: none;
   border-radius: 5px;
-  padding: 8px 12px;
+  padding: 5px 8px;
   margin-right: 5px;
 }
 
@@ -542,7 +542,7 @@ table.dataTable td {
   color: #fff;
   border: none;
   border-radius: 5px;
-  padding: 8px 12px;
+  padding: 5px 8px;
 }
 
 #studentTable_wrapper .buttons-print:hover {

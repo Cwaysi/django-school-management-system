@@ -1,4 +1,4 @@
-{% extends 'base2.html' %}
+{% extends 'base.html' %}
 {% load static %}
 {% load bootstrap5 %}
 
@@ -7,7 +7,7 @@
   
 <center>
   <h1 style='margin-top: 50px; padding: 20px;'> Add New Student </h1>
-  <p style='margin: 0; padding: 0'><a href='{% url 'allstudents' %}'>View all students</a></p>
+  <p style='margin: 0; padding: 0'><a class="btn btn-outline-secondary" href='{% url 'allstudents' %}'>View all students</a></p>
 </center><hr>
 <section style='background-color: white; padding: 10px; border-radius: 12px; '>
       <form action="{% url 'students'%}" enctype="multipart/form-data" method="post" class='formdiv'>

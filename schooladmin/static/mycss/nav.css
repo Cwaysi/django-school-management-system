@@ -1,4 +1,13 @@
-*{
+:root {
+    --background: #e2e2e2;
+    --navbar-width: 256px;
+    --navbar-width-min: 80px;
+    --navbar-dark-primary: #18283b;
+    --navbar-dark-secondary: #2c3e50;
+    --navbar-light-primary: #f5f6fa;
+    --navbar-light-secondary: #8392a5;
+  }
+body{
     margin: 0;
     padding: 0;
     outline: none;
@@ -6,6 +15,8 @@
     text-decoration: none;
     box-sizing: border-box;
     font-family: "poppins", sans-serif;
+    font-size: small;
+    background-color: var(--navbar-light-primary);
 }
 
 nav {
@@ -14,12 +25,13 @@ nav {
     bottom: 0;
     height: 100%;
     left: 0;
-    background: rgb(250, 80, 19);
+    background: var(--navbar-dark-secondary);
     width: 70px;
     overflow: hidden;
     transition: width 0.2s linear;
     box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
     margin: 0;
+    text-decoration: none;
     
 }
 
@@ -27,14 +39,18 @@ nav ul {
     list-style-type: none; /* Remove bullets from list */
     padding: 0; /* Remove default padding */
     margin: 0; /* Remove default margin */
+    text-decoration: none;
 }
 
-/* Other CSS rules remain the same */
+a {
+    text-decoration: none;
+}
 
 .logo{
     text-align: center;
     display: flex;
     margin: 10px 0 0 10px;
+    text-decoration: none;
 }
 .logo img{
     width: 45px;
@@ -55,6 +71,7 @@ nav ul {
     width: 300px;
     padding: 10px;
     margin-left: 0;
+    text-decoration: none;
 }
 .fas {
     position: relative;
@@ -71,9 +88,10 @@ nav ul {
     margin-left: 12px;
     font-size: 20px;
     color: white;
+    text-decoration: none;
 }
 .aa:hover{
-    background:navy;
+    background:var(--navbar-dark-primary);
 }
 nav:hover{
     width: 280px;
@@ -85,8 +103,67 @@ nav:hover{
 }
 nav ul {
     list-style-type: none; 
+    text-decoration: none;
 }
 
 nav ul li {
     margin: 0; 
+    text-decoration: none;
+}
+.mycard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.formcard {
+    border: 2px dashed var(--navbar-dark-primary); /* Changed border-style to border and adjusted border color */
+    padding: 20px;
+    box-shadow: 0 4px 8px 0 gray;
+    max-width: 1020px; /* Changed width to max-width for better responsiveness */
+    margin: 0 auto; /* Center the card horizontally */
+}
+
+.formdiv {
+    display: flex;
+    justify-content: space-around;
+}
+
+.formsec {
+    padding: 20px;
+    box-shadow: 0 4px 8px 0 gray;
+    flex: 1;
+    margin: 30px;
+}
+
+.forminp {
+    border-radius: 5px;
+    height: 45px;
+    padding: 8px;
+    border: 1px solid var(--navbar-dark-primary); /* Added border width and changed border-style to solid */
+    margin-bottom: 15px;
+    font-size: 16px; /* Changed font-size to 16px for consistency */
+    text-transform: uppercase;
+    line-height: normal; /* Reset line-height to normal */
+}
+
+.innersec {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.dropdown-toggle {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.dropdown-toggle:hover {
+    background-color: #0056b3;
 }
